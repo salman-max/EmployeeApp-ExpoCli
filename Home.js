@@ -1,53 +1,50 @@
 import react from "react";
 import {View,Text, StyleSheet, StatusBar,FlatList, Image} from 'react-native'
-import {Card,Colors,FAB} from "react-native-paper";
+import {Card,FAB} from "react-native-paper";
+import Profile from "./Profile";
 
 
-const SweetCard = (props) => {
+const Home = ({navigation}) => {
     const data = [
 
-        {id : 1, name: "Sallauddin", position:"Graphic Designer"} ,
+        {id : 1, name: "Sallauddin", position:"Graphic Designer",} ,
         {id : 2, name: "Hussain", position:"Mirror Artist"} ,
         {id : 3, name: "Azam", position:"Mechanical Engineer"},
-        {id : 4, name: "Rajkumar", position:"Entrepreneur"},
-        {id : 5, name: "Murad", position:"Catering Owner"},
-        {id : 6, name: "Hussain", position:"Mirror Artist"} ,
-        {id : 7, name: "Azam", position:"Mechanical Engineer"},
-        {id : 8, name: "Rajkumar", position:"Entrepreneur"},
-        {id : 9, name: "Murad", position:"Catering Owner"},
-
-]  
-
+        
+       ]  
+      
 
 const MyEmployees = ((item) =>{
     return(
 
-<View>
-    <StatusBar backgroundColor={'orange'}></StatusBar>
+<View style = {{margin :10, justifyContent : 'space-between',}}>
 
-        <Card style = {styles.mycard}>
-        <View>
-    <Image style = {{height:60, width :60, borderRadius : 30, flexDirection : 'column' , alignItems : 'center'}}
-    source = {{uri : 'https://images.unsplash.com/photo-1627161684458-a62da52b51c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=549&q=80'}}></Image>
+    <StatusBar backgroundColor={'#6aff'}></StatusBar>
+    <View>
+        <Card style =  {styles.mycard} onPress = {()=>navigation.navigate("Pro")}>
+      
+    <Image style = {{height:60, marginTop : 20, justifyContent: 'center',width : '100%', width :60,  borderRadius : 30,padding : 60 }}
+    source= {require('../logo/assets/style.png')}></Image>
 
-<View style = {styles.ttext}>
+<View style = {{flexDirection : 'row',shadowColor: '#171717', opacity : 0.9, shadowRadius  : 10 , shadowOffset : {width : -2, height :6 } ,  alignItems : 'center',  justifyContent : 'center', backgroundColor : 'white'}}>
+
+<Text style = {{flex : 1,fontWeight : 'bold', paddingLeft : 6}}>{item.id} </Text>
 
 
-
-<Text>{item.id}</Text>
-    <Text>{item.name}</Text>
+    <Text style = {{flex : 1, alignItems : 'center', fontWeight : 'bold'}}>{item.name}</Text>
     <Text>{item.position}</Text>
 
 </View>
 
 
 
-        </View>
 
 
 
 
     </Card>
+    
+    </View>
 
     </View>
 
@@ -65,7 +62,7 @@ const MyEmployees = ((item) =>{
 
 
 return(
-    <View>
+    <View style = {{flex : 1,marginBottom : 30, }}>
 
 <FlatList data={data}
 renderItem = {({item}) =>{
@@ -80,13 +77,12 @@ keyExtractor = {item =>{item.id}}
 
 ></FlatList>
 
-<FAB onPress = {() => { props.navigation.navigate("Create")
+<FAB  onPress={() =>navigation.navigate("Creat")}
  
 
-}}
     style={styles.fab}
     small = {false}
-    theme = {{colors:{accent:'blue'}}}
+    theme = {{colors:{accent:'blue'}}} 
     icon="plus"
  
   />
@@ -95,6 +91,7 @@ keyExtractor = {item =>{item.id}}
     {MyEmployees}
 
     </View>
+    
 
 )
 
@@ -108,16 +105,24 @@ keyExtractor = {item =>{item.id}}
 
 const styles = StyleSheet.create({
 
+   
+
     mycard : {
 
 
         
+        borderRadius : 4,
+      
+        width : '100%',
+    
         
-        margin : 10,
+        backgroundColor : '#c8ff00',
+
         
-        flexDirection : 'column',
-        justifyContent : 'center',
-        backgroundColor : 'yellow'
+  
+        
+        
+        
 
 
     },
@@ -128,15 +133,9 @@ const styles = StyleSheet.create({
     bottom: 0,
       },
 
-ttext : {
-
-    fontSize : 20,
-    flexDirection : 'row',
-    alignSelf : 'center',
-},
 
 
 
 })
 
-export default SweetCard;
+export default Home;

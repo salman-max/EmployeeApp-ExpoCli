@@ -3,7 +3,7 @@ import {Text,View,StatusBar,Modal, StyleSheet,Linking} from 'react-native'
 import { TextInput, Button} from 'react-native-paper'
 
 
-const CreateEmployee = (props) =>{
+const CreateEmployee = () =>{
 
 
         const [name,setName]= useState("")
@@ -17,7 +17,7 @@ const CreateEmployee = (props) =>{
 
     return(
 
-        <View style = {styles.mytextInput}>
+        <View style = {styles.mytextInput} >
 
 
 {/* <StatusBar backgroundColor={"#2e04d4"}></StatusBar> */}
@@ -29,7 +29,7 @@ const CreateEmployee = (props) =>{
         
         
        
-      <View style = {{flexDirection : 'column', justifyContent : 'space-between', margin : 10, }}>
+      <View style = {{flexDirection :'row', justifyContent : 'space-between', paddingTop : 10 }}>
         <Button icon= "camera" mode='contained'  onPress={() =>setModal(true)}>Click Here</Button>
         
 
@@ -62,9 +62,9 @@ onRequestClose={() => {
 <View style = {styles.mymodal}>
 
 <View style = {styles.mybutton}>
-<Button icon= "facebook" mode='contained' theme={theme} Linking = 'https://www.facebook.com' onPress={() =>setModal(true)}>Submit</Button>
+<Button icon= "facebook" mode='contained' theme={theme}  onPress={() =>setModal(true)}>Submit</Button>
 
-<Button icon= "instagram" mode='contained'  onPress={() =>setModal(true)}>Cancel</Button>
+<Button icon= "instagram" mode='contained' >Cancel</Button>
 
 </View>
 </View>
